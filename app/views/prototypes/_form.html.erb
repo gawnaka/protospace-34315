@@ -1,25 +1,27 @@
 <%= form_with local: true do |f|%>
+<%= link_to current_user.name, edit_user_path(current_user) %>
   <div class="field">
-    <%= f.label :hoge, "プロトタイプの名称" %><br />
-    <%= f.text_field :hoge %>
+    <%= f.label :title, "プロトタイプの名称" %><br />
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :hoge, "キャッチコピー" %><br />
-    <%= f.text_area :hoge, class: :form__text %>
+    <%= f.label :catch_copy, "キャッチコピー" %><br />
+    <%= f.text_area :catch_copy, class: :form__text %>
   </div>
 
   <div class="field">
-    <%= f.label :hoge, "コンセプト" %><br />
-    <%= f.text_area :hoge, class: :form__text %>
+    <%= f.label :concept, "コンセプト" %><br />
+    <%= f.text_area :concept, class: :form__text %>
   </div>
 
   <div class="field">
-    <%= f.label :hoge, "プロトタイプの画像" %><br />
-    <%= f.file_field :hoge %>
+    <%= f.label :ActiveStorage, "プロトタイプの画像" %><br />
+    <%= f.file_field :ActiveStorage %>
   </div>
 
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
+    <%= link_to room.name, room_messages_path(room) %>
   </div>
 <% end %>

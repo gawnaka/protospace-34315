@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show]
+  before_action :set_Prototypes, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
 
   def index
@@ -11,38 +11,41 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    Prototypes.create(Prototypes_params)
+    Prototypes.create(prototypes_params)
+    
   end
 
   def destroy
     prototypes = Prototypes.find(params[:id])
     prototypes.destroy
-  end
-
-  def edit
+    redirect_to root_path
+    
+  def edit 
   end
 
   def update
     prototypes = Prototypes.find(params[:id])
-    prototypes.update(tweet_params)
+    prototypes.update( prototypes_params)
   end
 
   def show
+    @comment = Comment.new
+    @comments = @ prototypes.comments.includes(:user)
   end
 
   private
+  
   def Prototypes_params
-    params.require(:Prototypes).permit(:image,:text,:name, :email,:encrypted_password,:profile,:occupation,:position)
+    params.require(:Prototypes).permit(:image,:text,:name,:email,:encrypted_password,:profile,:occupation,:position).merge(user_id: current_user.id)
   end
 
   def set_Prototypes
     @prototypes = Prototypes.find(params[:id])
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    def move_to_index
+      unless user_signed_in?
+        redirect_to action: :index
   end
+ end
 end
-  
