@@ -19,7 +19,7 @@ class PrototypesController < ApplicationController
     prototypes = Prototypes.find(params[:id])
     prototypes.destroy
     redirect_to root_path
-    
+
   def edit 
   end
 
@@ -30,7 +30,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @ prototypes.comments.includes(:user)
+    @comments = @prototypes.comments.includes(:user)
   end
 
   private
@@ -48,4 +48,5 @@ class PrototypesController < ApplicationController
         redirect_to action: :index
   end
  end
+end
 end
