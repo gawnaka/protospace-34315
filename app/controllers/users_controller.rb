@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-  def show
-    user = User.find(params[:id])
-    @prototypes = user.prototypes
-  end
-  
   def edit
   end
 
@@ -13,10 +8,19 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :encrypted_password, :name, :profile, :occupation, :position)
+    params.require(:user).permit(:name, :email)
   end
 end
+  
+  def show
+      @name = current_user.name
+      @profile = current_user.profile
+      @occupation = current_user.occupation
+      @position = current_user.position
+      @protospace = current_user.protospace
+    end

@@ -1,11 +1,11 @@
 class CreatePrototypes < ActiveRecord::Migration[6.0]
-  
-  def change
-    create_table :prototypes do |t|
-      t.string :title, null: false
-      t.text :catch_copy, null: false
-      t.text :concept, null: false
-      t.timestamps
+    def change
+      create_table :prototypes do |t|
+        t.references  :user,                foreign_key: true
+        t.text        :concept
+        t.text        :catch_copy
+        t.string      :title,               null: false, default: ""
+        t.timestamps
+      end
     end
   end
-end

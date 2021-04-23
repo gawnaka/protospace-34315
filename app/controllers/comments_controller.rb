@@ -1,22 +1,21 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comments.new
-    @prototypes = Prototypes.find(params[:prototypes_id])
+    @comment= Comment.new
+    @Prototypes= Prototypes.find(params[:Prototypes_id])
 
-  def create
-    @prototypes = Prototypes.find(params[:prototypes_id])
-    @comments = @prototypes.comments.new(comments_params)
-  if  @comments.save
-    redirect_to room_comments_path(@prototypes)
-  else
-    @comments = @prototypes.comments.includes(:user)
-    render :index
-   end
+    def create
+      @Prototypes = Prototypes.find(params[:Prototypes_id])
+      @comment = @Prototypes.comment.new(comment_params)
+      @comment.save
+      redirect_to Prototypes_comment_path(@comment)
+    else
+      @comment = @Prototypes.comment.includes(:user)
+      render :index
+    end
   end
+  
 
   private
-
-  def comments_params
-    params.require(:comments).permit(:content).merge(user_id: current_user.id)
+  def comment_params
+    params.require(:comment).permit(:comment).merge(user_id: current_user.id)
   end
-end

@@ -2,6 +2,7 @@
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">プロトタイプ編集</h2>
+      <%= render partial: "prototypes/form" ,locals: { prototypes: @prototype }  %>
       <%# 部分テンプレートでフォームを表示する %>
       <h3>更新が完了しました。</h3>
     <a class="btn" edit_user_path="/">投稿一覧へ戻る</a>
