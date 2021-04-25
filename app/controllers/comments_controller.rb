@@ -1,20 +1,25 @@
 class CommentsController < ApplicationController
-  def index
-    @comment= Comment.new
-    @Prototypes= Prototypes.find(params[:Prototypes_id])
 
-    def create
-      @Prototypes = Prototypes.find(params[:Prototypes_id])
-      @comment = @Prototypes.comment.new(comment_params)
-      @comment.save
-      redirect_to Prototypes_comment_path(@comment)
-    else
-      @comment = @Prototypes.comment.includes(:user)
-      render :index
-    end
+     def index
+     @comment= Comment.new
+     @Prototypes= Prototypes.find(params[:Prototypes_id])
+     end
+
+     def create
+      if
+        @comment = Comment.new(comment_params)
+        redirect_to "/prototypes/#{@comment.prototype.id}" 
+      else
+        @prototype = @comment.prototype
+        @comments = @prototype.comments
+        render "prototypes/show"
+      end
+     end
+
+     private
+
+    def comment_params
+    params.require(:comment).permit(:comment,:image).merge(user_id: current_user.id, prototype_id: params[:prototype_id])
+    
   end
-  
-  private
-  def comment_params
-    params.require(:comment).permit(:comment,:image).merge(user_id: current_user.id)
-  end
+end
