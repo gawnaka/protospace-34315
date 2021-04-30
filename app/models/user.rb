@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :prototype
 has_many :comments  # commentsテーブルとのアソシエーション
+validates :password, presence: true
+validates :name, :profile, :occupation, :position ,presence: true
  end
