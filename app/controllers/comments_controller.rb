@@ -1,10 +1,5 @@
 class CommentsController < ApplicationController
 
-     def index
-     @comment= Comment.new
-     @Prototypes= Prototypes.find(params[:Prototypes_id])
-     end
-
      def create
       if
         @comment = Comment.new(comment_params)
@@ -18,8 +13,8 @@ class CommentsController < ApplicationController
 
      private
 
-    def comment_params
-    params.require(:comment).permit(:comment,:image).merge(user_id: current_user.id, prototype_id: params[:prototype_id])
+     def comment_params
+     params.require(:comment).permit(:comment).merge(user_id: current_user.id, prototype_id: params[:prototype_id])
     
   end
 end

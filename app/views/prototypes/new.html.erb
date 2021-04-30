@@ -5,7 +5,7 @@
      <form enctype="multipart/form-data" action="/prototypes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="erddwF99GJPBezzhHE4/NAyJtSpOf+ZCOtvGQLtgmodWOmw2Vxe74bwE0lnvHQFCGneR3nhBjVTSiLqoahO9lQ==">
   
         <h3>投稿が完了しました。</h3>
-        <%= render partial: 'prototypes/form' %>
+        <%= render partial:  "prototypes/form" , locals: { prototype: @prototype } %>
     <a class="btn" href="/">投稿一覧へ戻る</a>
     </div>
   </div>

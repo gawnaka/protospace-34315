@@ -1,28 +1,26 @@
-  <%= form_with local: true do |f|%>
+<%= form_with(model: @prototype , local: true) do |f| %>
 
   <div class="field">
-    <div class="field_with_errors"><label for="prototype_title">プロトタイプの名称</label></div><br>
-    <div class="field_with_errors"><input type="text" value="" name="prototype[title]" id="prototype_title"></div>
+    <%= f.label :title, "プロトタイプの名称" %><br />
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <div class="field_with_errors"><label for="prototype_catch_copy">キャッチコピー</label></div><br>
-    <div class="field_with_errors"><textarea class="form__text" name="prototype[catch_copy]" id="prototype_catch_copy"></textarea></div>
+    <%= f.label :catch_copy, "キャッチコピー" %><br />
+    <%= f.text_area :catch_copy, class: :form__text %>
   </div>
 
   <div class="field">
-    <div class="field_with_errors"><label for="prototype_concept">コンセプト</label></div><br>
-    <div class="field_with_errors"><textarea class="form__text" name="prototype[concept]" id="prototype_concept"></textarea></div>
+    <%= f.label :concept, "コンセプト" %><br />
+    <%= f.text_area :concept, class: :form__text %>
   </div>
 
   <div class="field">
-    <div class="field_with_errors"><label for="prototype_image">プロトタイプの画像</label></div><br>
-    <div class="field_with_errors"><input type="file" name="prototype[image]" id="prototype_image"></div>
+    <%= f.label :image, "プロトタイプの画像" %><br />
+    <%= f.file_field :image%>
   </div>
 
   <div class="actions">
-    <input type="submit" name="commit" value="保存する" class="form__btn" data-disable-with="保存する">
-  </div>
-</form>
+    <%= f.submit "保存する", class: :form__btn  %>
   </div>
 <% end %>
