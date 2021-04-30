@@ -16,8 +16,10 @@
         </div>
       <% end %>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="prototype__image">
        <div class="prototype__image:rul(<%= @prototype.image %>);">
-        <%= image_tag @prototype.image %>
+
+         <%= image_tag @prototype.image.variant(resize: '500x500') %>
 
       </div>
       <div class="prototype__body">
