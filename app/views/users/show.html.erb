@@ -8,17 +8,20 @@
       <table class="table">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
       <%= link_to "チャットページに戻る", :back, class: 'btn'%>
-    </div> 
-    <%= form_with model: current_user, local: true do |f|%>
+      </div> 
+           <%= form_with model: current_user, local: true do |f|%>
+       
         <tbody>
           <tr>
             <th class="table__col1">名前</th>
-            <td class="table__col2"><%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link %>
+            <td class="table__col2"> <%=f.text_field :name%>
             
           </tr>
           <tr>
             <th class="table__col1">プロフィール</th>
-            <td class="table__col2"><%= f.text_field :profile%>
+            <td class="table__col2">
+            <%= f.text_field :profile%>
+
             </td>
           </tr>
           <tr>
@@ -35,14 +38,18 @@
         </tbody>
       </table>
       <h2 class="page-heading">
-        
-        <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link %>
-         <%= "のプロトタイプ"%>
+       <%# <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link %> 
+         <%=f.text_field :name %> さんのプロトタイプ。
       </h2>
       <div class="user__card">
+      <% if user_signed_in? %>
+        <%= render partial: 'prototypes/prototype', collection: @prototypes %>
+      <% end %>
+      <% end %>
       <div class="comments">
       </div>
-      <% end %>
+
+      </div>
     </div>
   </div>
  </div>
