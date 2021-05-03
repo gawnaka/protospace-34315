@@ -10,17 +10,16 @@ class PrototypesController < ApplicationController
         end
 
         def create
-         @prototype = Prototype.new(prototype_params)
-          if @prototype.save!
-        redirect_to root_path
-        else
-        render :new
-        redirect_to root_path
-        end
-        end
+           @prototype = Prototype.new(prototype_params)
+           if @prototype.save
+           redirect_to root_path
+           else
+           redirect_to new_prototype_path
+          end
+          end
 
         def show
-        @prototype = Prototype.find(params[:prototype_id] || params[:id])
+        @prototype = Prototype.find(params[:id])
         @comment = Comment.new
         @comments = @prototype.comments.includes(:user)
         end
