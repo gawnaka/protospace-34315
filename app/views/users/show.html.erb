@@ -2,15 +2,12 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-      <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link %>
-        <%'さん情報'%>
-      </h2>
+　　　　<%=@user.name%>さんの情報
+        </h2>
       <table class="table">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
       <%= link_to "チャットページに戻る", :back, class: 'btn'%>
       </div> 
-     
-           <%= form_with model: current_user, local: true do |f|%>
         <tbody>
           <tr>
             <th class="table__col1">名前</th>
@@ -19,34 +16,31 @@
           </tr>
           <tr>
             <th class="table__col1">プロフィール</th>
-            <td class="table__col2">
-            <%= @user.profile %>
-
+            <td class="table__col2"><%= @user.profile %>
             </td>
           </tr>
           <tr>
             <th class="table__col1">所属</th>
             <td class="table__col2"><%= @user.occupation%>
-
             </td>
              </tr>
           <tr>
             <th class="table__col1">役職</th>
             <td class="table__col2"><%=@user.position %>
+      
             </td>
           </tr>
         </tbody>
       </table>
       <h2 class="page-heading">
-       <%# <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link %> 
+      
          <%=@user.name %> さんのプロトタイプ。
       </h2>
       <div class="user__card">
       
-      <%= render partial: 'prototypes/prototype', collection: @user.prototype %>  
-      <% end %>
+      <%= render partial: 'prototypes/prototype', collection: @user.prototype %> 
+      
       </div>
-      </div>
-    </div>
-  </div>
+    　</div>
+  　</div>
  </div>

@@ -8,9 +8,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
-  </head>
+    </head>
 
-  <body>
+    <body>
     <header class="header">
       <div class="inner">
         <div class="nav">
@@ -32,9 +32,11 @@
         </div>
       </div>
     </header>
+    
     <%= yield %>
     <footer class="footer">
       <p class="copyright">Copyright © PROTO SPACE All rights reserved.</p>
     </footer>
-  </body>
+    </body>
+    </div>
 </html>

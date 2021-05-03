@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
   
-  def show
-    @prototypes = Prototype.all
+    def show
+    if @prototypes = Prototype.all
     @user = User.find(params[:id])
     @name = current_user.name
     @profile = current_user.profile
     @occupation = current_user.occupation
     @position = current_user.position
     @prototype = current_user.prototype
+    else
+      render "users/show"
     end
-
+    end
+    
     private
 
     def user_params
