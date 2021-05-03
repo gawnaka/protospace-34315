@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  belongs_to :user
-
+  #belongs_to :user
+  #has_many :prototype_users
+ # has_many :prototype, through: :prototype_users
   has_one_attached :image
   has_many :prototype
   has_many :comments  # commentsテーブルとのアソシエーション

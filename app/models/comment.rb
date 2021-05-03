@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :prototype  # tweetsテーブルとのアソシエーション
   belongs_to :user 
+  
+  validates :comments, presence: true
 
    # usersテーブルとのアソシエーション
   #has_one_attached :image
