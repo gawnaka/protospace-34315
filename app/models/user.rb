@@ -4,15 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  #belongs_to :user
-  #has_many :prototype_users
- # has_many :prototype, through: :prototype_users
-  has_many :prototype
-  has_many :comments  # commentsテーブルとのアソシエーション
-  validates :password, presence: true
-  validates :name, presence: true
-  validates :occupation, presence: true
-  validates :profile, presence: true
-  validates :occupation, presence: true
-   
- end
+ validates :password, presence: true
+ validates :name, presence: true
+ validates :occupation, presence: true
+ validates :profile, presence: true
+ validates :occupation, presence: true
+
+ has_many :prototypes
+ has_many :comments  
+end

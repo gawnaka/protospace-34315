@@ -2,7 +2,7 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-　　　　<%=@user.name%>さんの情報
+      <%= "#{@user.name} "%>さんの情報
         </h2>
       <table class="table">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
@@ -26,19 +26,23 @@
              </tr>
           <tr>
             <th class="table__col1">役職</th>
-            <td class="table__col2"><%=@user.position %>
+            <td class="table__col2"><%= @user.position %>
       
             </td>
           </tr>
-        </tbody>
+          </tbody>
       </table>
       <h2 class="page-heading">
       
-         <%=@user.name %> さんのプロトタイプ。
+         <%="#{@user.name} "%> さんのプロトタイプ。
       </h2>
       <div class="user__card">
       
-      <%= render partial: 'prototypes/prototype', collection: @user.prototype %> 
+      <%= render partial: 'prototypes/prototype', collection: @user.prototypes %> 
+      
+      </div>
+    　</div>
+      </h2>
       
       </div>
     　</div>
